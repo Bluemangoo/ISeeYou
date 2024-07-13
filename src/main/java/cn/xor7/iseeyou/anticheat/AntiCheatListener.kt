@@ -25,7 +25,7 @@ object AntiCheatListener : Listener {
                     if (currentTime - it.value.lastTagged >
                         Duration.ofMinutes(toml!!.data.recordSuspiciousPlayer.recordMinutes).toMillis()
                     ) {
-                        it.value.photographer.stopRecording(toml!!.data.asyncSave)
+                        it.value.photographer.stopRecording(true)
                         return@removeIf true
                     } else false
                 }
@@ -76,7 +76,7 @@ object AntiCheatListener : Listener {
     fun onPlayerQuit(e: PlayerQuitEvent) {
         val suspiciousPhotographer = suspiciousPhotographers[e.player.name]
         if (suspiciousPhotographer != null) {
-            suspiciousPhotographer.photographer.stopRecording(toml!!.data.asyncSave)
+            suspiciousPhotographer.photographer.stopRecording(true)
             suspiciousPhotographers.remove(e.player.name)
         }
     }

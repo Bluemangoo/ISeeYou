@@ -16,8 +16,8 @@ repositories {
     mavenCentral()
     maven("https://oss.sonatype.org/content/groups/public/")
     maven("https://maven.aliyun.com/repository/public")
-    maven("https://repo.leavesmc.top/releases")
-    maven("https://repo.leavesmc.top/snapshots")
+    maven("https://repo.leavesmc.org/releases")
+    maven("https://repo.leavesmc.org/snapshots")
     maven("https://repo.codemc.org/repository/maven-public/")
     flatDir {
         dirs("libs")
@@ -30,7 +30,7 @@ dependencies {
     compileOnly(files("libs/Matrix_7.7.32A.jar"))
     compileOnly(files("libs/VulcanAPI.jar"))
     implementation("com.github.MWHunter:GrimAPI:9f5aaef74b")
-    compileOnly("com.github.Elikill58:Negativity:v2-SNAPSHOT")
+    compileOnly("com.github.Elikill58:Negativity:2.7.1")
     //other dependencies
     implementation("com.moandjiezana.toml:toml4j:0.7.2")
     compileOnly("top.leavesmc.leaves:leaves-api:1.20.4-R0.1-SNAPSHOT")
@@ -38,6 +38,10 @@ dependencies {
     implementation("dev.jorel:commandapi-bukkit-kotlin:9.3.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
     implementation("net.jodah:expiringmap:0.5.11")
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
 }
 
 val targetJavaVersion = 17

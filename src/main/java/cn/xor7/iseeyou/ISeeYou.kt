@@ -147,7 +147,7 @@ class ISeeYou : JavaPlugin(), CommandExecutor {
                             sender.sendMessage("§4不存在该摄像机！")
                             return@anyExecutor
                         }
-                        photographers[uuid]?.stopRecording(toml!!.data.asyncSave)
+                        photographers[uuid]?.stopRecording(true)
                         sender.sendMessage("§a成功移除摄像机：$name")
                     }
                 }
@@ -208,7 +208,7 @@ class ISeeYou : JavaPlugin(), CommandExecutor {
     override fun onDisable() {
         CommandAPI.onDisable()
         for (photographer in photographers.values) {
-            photographer.stopRecording(toml!!.data.asyncSave)
+            photographer.stopRecording(true)
         }
         photographers.clear()
         highSpeedPausedPhotographers.clear()

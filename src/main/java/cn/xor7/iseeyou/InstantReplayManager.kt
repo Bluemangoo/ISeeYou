@@ -89,7 +89,7 @@ object InstantReplayManager {
             recordFile.delete()
         }
         recordFile.createNewFile()
-        photographerMap[firstSubmitUUID]?.stopRecording(toml!!.data.asyncSave) ?: return false
+        photographerMap[firstSubmitUUID]?.stopRecording(true) ?: return false
         photographerMap.remove(firstSubmitUUID)
         player2photographerUUIDMap[player.uniqueId.toString()]?.remove(firstSubmitUUID)
         photographer2playerUUIDMap.remove(firstSubmitUUID)

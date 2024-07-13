@@ -106,7 +106,7 @@ object EventListener : Listener {
             InstantReplayManager.taskMap[player.uniqueId.toString()]?.cancel()
             InstantReplayManager.taskMap.remove(player.uniqueId.toString())
             InstantReplayManager.player2photographerUUIDMap[player.uniqueId.toString()]?.forEach { uuid ->
-                InstantReplayManager.photographerMap[uuid]?.stopRecording(false,false)
+                InstantReplayManager.photographerMap[uuid]?.stopRecording(true,false)
             }
         }
         val photographer: Photographer = photographers[player.uniqueId.toString()] ?: return
@@ -114,7 +114,7 @@ object EventListener : Listener {
         if (toml!!.data.pauseInsteadOfStopRecordingOnPlayerQuit) {
             photographer.resumeRecording()
         } else {
-            photographer.stopRecording(toml!!.data.asyncSave)
+            photographer.stopRecording(true)
             photographers.remove(player.uniqueId.toString())
         }
     }
